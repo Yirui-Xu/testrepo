@@ -261,7 +261,7 @@ view: google_analytics_sample {
 
   measure: previous_year_users{
     type: number
-    value_format_name: decimal_0
+    value_format_name: decimal_1
     sql:
       CASE
       WHEN (EXTRACT(YEAR FROM ${date_raw})-1) = ${previous_year}
