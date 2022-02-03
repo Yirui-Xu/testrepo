@@ -226,7 +226,7 @@ view: google_analytics_sample {
     measure: total_sessions {
       type: sum
       sql: ${sessions} ;;
-      value_format_name: decimal_2
+      value_format_name: decimal_1
     }
 
     measure: session_duration_sessions_ratio {
