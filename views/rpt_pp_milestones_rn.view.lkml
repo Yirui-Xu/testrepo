@@ -462,8 +462,34 @@ view: rpt_pp_milestones_rn {
     drill_fields: [project_name, activity_type_name, task_name, display_operating_unit_name]
   }
 
-  measure: elivery_programme_variance_reversed {
+  measure: delivery_programme_variance_reversed_sum {
     type: sum
+    sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
+  }
+  measure: min_delivery_programme_variance_reversed {
+    type: min
+    sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
+  }
+
+  measure: max_delivery_programme_variance_reversed {
+    type: max
+    sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
+  }
+
+  measure: median_delivery_programme_variance_reversed {
+    type: median
+   sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
+  }
+
+  measure: 25_percentile_delivery_programme_variance_reversed {
+    type: percentile
+    percentile: 25
+    sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
+  }
+
+  measure: 75_percentile_delivery_programme_variance_reversed {
+    type: percentile
+    percentile: 75
     sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
   }
 }
