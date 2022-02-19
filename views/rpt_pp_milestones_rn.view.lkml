@@ -492,4 +492,27 @@ view: rpt_pp_milestones_rn {
     percentile: 75
     sql: ${TABLE}.Delivery_Programme_Variance_Reversed ;;
   }
+
+  dimension: approved_delivery {
+    type: date
+    sql: CASE
+        WHEN (lower(${milestone}) like '%commence%' or lower(${milestone}) like '%start%') THEN ${baseline_start_raw}
+        WHEN (lower(${milestone}) like '%complete%' or lower(${milestone}) like '%finish%') THEN ${approved_delivery_finish_raw}
+      ELSE ${approved_delivery_finish_raw}
+      END ;;
+  }
+
+  dimension: forecast_current {
+    type: date
+    sql: CASE
+        WHEN (lower(${milestone}) like '%commence%' or lower(${milestone}) like '%start%') Then ${forecast_start_raw}
+        WHEN (lower(${milestone}) like '%complete%' or lower(${milestone}) like '%finish%') Then ${forecast_finish_raw}
+      ELSE ${forecast_finish_raw}
+      END ;;
+  }
+
+  dimension: delivery_programme_ {
+    type: number
+    sql: DATEDIFF(day, ${forecast_current}, ${approved_delivery}) ;;
+  }
 }
